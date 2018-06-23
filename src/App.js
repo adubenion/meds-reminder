@@ -2,30 +2,32 @@ import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
 import { firebase, firestore, init, db } from './firebase';
-import { Button, Hero, Container, Title, SubTitle, Delete } from 'reactbulma';
+import { Header } from './Header';
+import { Form } from './Form';
 
 
-const Header = () => {
-return <div>
-        <Hero>
-          <Hero.Body>
-            <Container>
-              <Title>
-                Aaron DuBenion
-              </Title>
-              <SubTitle>
-                Software Engineer/Web Developer
-              </SubTitle>
-            </Container>
-          </Hero.Body>
-        </Hero>
-        <Button primary onClick={() => {alert('Hello!')}}>Hello World<Delete small /></Button>
-      </div>
-    }
+
+
+
 
 class App extends Component {
   constructor(props) {
     super(props);
+
+    this.state = {
+      firstName: '',
+      lastName: '',
+      favAnimal: '',
+      favColor: ''
+    }
+    this.handleForm = this.handleForm.bind(this)
+  }
+  handleForm(e) {
+    var value = e.target.value;
+    var name = e.target.name
+    console.log(`${name}: ${value}`)
+    this.setState({[name]:value}, () => {console.log(this.state)})
+    // console.log(this.state);
   }
   componentDidMount() {
     var testRef = db.collection("Test").doc("Test");
@@ -40,9 +42,17 @@ class App extends Component {
       console.log('Error getting document: ', error)
     });
   }
+
+
   render() {
+
+  
+
     return (
-      <Header />
+      <div>
+        <Header />
+        <Form handleForm={this.handleForm} form={this.state} />
+      </div>
     );
   }
 }

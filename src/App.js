@@ -2,8 +2,11 @@ import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
 import { firebase, firestore, init, db } from './firebase';
+import { Container } from 'reactbulma';
 import { Header } from './Header';
 import { Form } from './Form';
+import { NavBar } from './NavBar';
+import { Login } from './Login';
 
 
 
@@ -49,10 +52,12 @@ class App extends Component {
   
 
     return (
-      <div>
+      <Container>
         <Header />
+        <NavBar />
         <Form handleForm={this.handleForm} form={this.state} />
-      </div>
+        <Login />
+      </Container>
     );
   }
 }

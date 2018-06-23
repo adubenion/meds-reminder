@@ -3,19 +3,17 @@ import { Button, Hero, Container, Title, SubTitle, Delete, Field, Input, Control
 
 export const Header = () => {
   return(
-      <div>
         <Hero>
           <Hero.Body>
             <Container>
               <Title>
-                Aaron DuBenion
+                Meds Reminder
               </Title>
               <SubTitle>
-                Software Engineer/Web Developer
+                A Simple Solution to Your Medication Needs
               </SubTitle>
             </Container>
           </Hero.Body>
         </Hero>
-        <Button primary onClick={() => {alert('Hello!')}}>Hello World<Delete small /></Button>
-      </div>
-    )}
+    );
+}
